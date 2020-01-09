@@ -1,0 +1,10 @@
+*.aux
+*.log
+*.pdf
+*.gz
+*.aux
+*.bbl
+*.blg
+*.toc
+*.bak
+*.swp
