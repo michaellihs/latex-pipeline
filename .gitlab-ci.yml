@@ -4,4 +4,4 @@ pdf:
         - make pdf
     artifacts:
         paths:
-            - *.pdf
+            - '*.pdf'
