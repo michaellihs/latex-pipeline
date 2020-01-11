@@ -7,4 +7,4 @@ default: build
 	docker run --mount type=bind,source=$(PWD),destination=/build build
 
 pdf:
-	pdflatex main.tex
+	pdflatex *.tex

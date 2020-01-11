@@ -2,3 +2,6 @@ image: andykuszyk/latex
 pdf:
     script:
         - make pdf
+    artifacts:
+        paths:
+            - *.pdf
