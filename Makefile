@@ -9,7 +9,7 @@ default: build
 clean:
 	rm *.pdf
 
-pdf: clean
+pdf:
 	pdflatex *.tex
 
 stamp:
