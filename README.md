@@ -1,5 +1,5 @@
 # Template Latex Book
-This repo contains a template document structure and CI pipeline for Latex books that result in a version PDF being generated.
+This repo contains a template document structure and CI pipeline for Latex books that result in a versioned PDF being generated.
 
 ## Usage
 Simply copy this repo and customise the following files:
