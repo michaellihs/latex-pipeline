@@ -2,6 +2,7 @@ image: andykuszyk/latex
 pdf:
     script:
         - make pdf
+        - make stamp
     artifacts:
         paths:
             - *.pdf

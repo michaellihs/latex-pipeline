@@ -6,5 +6,11 @@ build:
 default: build
 	docker run --mount type=bind,source=$(PWD),destination=/build build
 
-pdf:
+clean:
+	rm *.pdf
+
+pdf: clean
 	pdflatex *.tex
+
+stamp:
+	./scripts/stamp.sh
