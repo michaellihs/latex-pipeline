@@ -1,3 +1,3 @@
 FROM andykuszyk/latex
 WORKDIR build
-CMD pdflatex *.tex
+CMD pdflatex *.tex && pdflatex *.tex

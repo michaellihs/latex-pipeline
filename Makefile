@@ -10,7 +10,7 @@ clean:
 	rm *.pdf
 
 pdf:
-	pdflatex *.tex
+	pdflatex *.tex && pdflatex *.tex
 
 stamp:
 	./scripts/stamp.sh
