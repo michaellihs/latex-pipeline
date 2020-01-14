@@ -14,3 +14,6 @@ pdf:
 
 stamp:
 	./scripts/stamp.sh
+
+watch:
+	find . | grep -v git | grep -e 'tex$$' | entr -c make
