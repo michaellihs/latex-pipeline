@@ -17,3 +17,6 @@ stamp:
 
 watch:
 	find . | grep -v git | grep -e 'tex$$' | entr -c make
+
+count:
+	wc -w chapters/*.tex
