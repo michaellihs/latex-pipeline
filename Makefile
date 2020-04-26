@@ -20,3 +20,12 @@ watch:
 
 count:
 	wc -w chapters/*.tex
+
+update:
+	./scripts/update.sh
+
+html:
+	./scripts/html.sh
+
+epub:
+	./scripts/epub.sh
