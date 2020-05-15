@@ -31,4 +31,4 @@ epub:
 	./scripts/epub.sh
 
 reading-time-mins:
-	echo $$(($$(cat $$(find . | grep -v .git | grep -e 'tex$$') | wc | awk '{print $$3}') / 200))
+	echo $$(($$(cat $$(find . | grep -v .git | grep -e 'tex$$') | wc | awk '{print $$2}') / 200))
