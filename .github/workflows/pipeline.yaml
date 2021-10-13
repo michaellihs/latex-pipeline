@@ -4,12 +4,37 @@ jobs:
   Build-LaTex-Container:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Build Docker image
-        run: docker build . --file Dockerfile --tag michaellihs/latex:latest
+      - uses: actions/checkout@v2
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x    
+      - name: Build Docker Image
+        env:
+          DOCKER_ORG: michaellihs
+          DOCKER_REPO: latex
+          DOCKER_TAG: ${{ env.GITHUB_REF_SLUG }}
+        run: |
+          export DOCKER_FULLTAG="${DOCKER_ORG}/${DOCKER_REPO}:${DOCKER_TAG//\\//-}"
+          docker build -t "$DOCKER_FULLTAG" .
+          mkdir -p tmp-artifacts
+          docker save "$DOCKER_FULLTAG" > tmp-artifacts/docker-image.tar
+          echo "$DOCKER_FULLTAG" > tmp-artifacts/docker-tag
+      - uses: actions/upload-artifact@v2
+        with:
+          name: docker-artifact
+          path: tmp-artifacts
   Build-LaTex:
+    needs: Build-LaTex-Container
     runs-on: ubuntu-latest
     container: michaellihs/latex:latest
     steps:
-      - name: Checkout Project
-        uses: actions/checkout@v1
+      - name: Download Docker Image (Artifact)
+        uses: actions/download-artifact@v2
+        with:
+          name: docker-artifact
+          path: tmp-artifacts
+      - name: Build PDF in Docker
+        run: |
+          cd tmp-artifacts
+          docker load < docker-image.tar
+          export DOCKER_FULLTAG=$(cat docker-tag)
+          docker run --rm "$DOCKER_FULLTAG" -v $(pwd):/build make pdf
