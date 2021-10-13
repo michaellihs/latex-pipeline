@@ -41,8 +41,7 @@ jobs:
           docker run --rm -v $(pwd):/build "$DOCKER_FULLTAG" make pdf
       - name: Release
         uses: softprops/action-gh-release@v1
-        # think about a tag-gate here
-        #if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
             template.pdf
