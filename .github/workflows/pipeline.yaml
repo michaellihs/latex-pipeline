@@ -33,9 +33,10 @@ jobs:
           path: tmp-artifacts
       - name: Build PDF in Docker
         run: |
-          cd tmp-artifacts
+          pushd tmp-artifacts
           docker load < docker-image.tar
           export DOCKER_FULLTAG=$(cat docker-tag)
+          popd
           docker run --rm -v $(pwd):/build "$DOCKER_FULLTAG" make pdf
       - name: Release
         uses: softprops/action-gh-release@v1
