@@ -7,8 +7,9 @@ jobs:
       - uses: actions/checkout@v1
       - name: Build Docker image
         run: docker build . --file Dockerfile --tag michaellihs/latex:latest
-  # Build-LaTex:
-  #   runs-on: ubuntu-latest
-  #   container: michaellihs/latex:latest
-  #   steps:
-  #     - 
+  Build-LaTex:
+    runs-on: ubuntu-latest
+    container: michaellihs/latex:latest
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v1
