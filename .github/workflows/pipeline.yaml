@@ -36,7 +36,7 @@ jobs:
           cd tmp-artifacts
           docker load < docker-image.tar
           export DOCKER_FULLTAG=$(cat docker-tag)
-          docker run --rm "$DOCKER_FULLTAG" -v $(pwd):/build make pdf
+          docker run --rm -v $(pwd):/build "$DOCKER_FULLTAG" make pdf
       - name: Release
         uses: softprops/action-gh-release@v1
         # think about a tag-gate here
