@@ -14,3 +14,8 @@ That's it, start writing!
 ## Tagged Releases
 
 The pipeline will generate and publish a release with every commit that has a git tag.
+
+## Further Resources
+
+* [`andykuszyk/latex` Dockerfile](https://github.com/andykuszyk/latex/blob/master/Dockerfile)
+* [Pandoc Projec](https://github.com/jgm/pandoc)
