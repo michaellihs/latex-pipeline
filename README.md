@@ -17,6 +17,7 @@ The pipeline will generate and publish a release with every commit that has a gi
 
 ## Further Resources
 
+* [Blog Post about LaTex Pipelines](https://andykuszyk.github.io/2020-05-19-latex-deployment-pipeline.html)
 * [`andykuszyk/latex` Dockerfile](https://github.com/andykuszyk/latex/blob/master/Dockerfile)
 * [Pandoc Projec](https://github.com/jgm/pandoc)
 * [`softprops/action-gh-release` GitHub Action](https://github.com/softprops/action-gh-release)
