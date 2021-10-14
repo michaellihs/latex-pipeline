@@ -1,4 +1,4 @@
-# Template Latex Book
+# LaTex Template with GitHub Actions
 
 This repo is a fork from [https://gitlab.com/akuszyk/template](https://gitlab.com/akuszyk/template). It contains a template document structure and GitHub actions pipeline for Latex books that result in a versioned PDF being generated.
 
