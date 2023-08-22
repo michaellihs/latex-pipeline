@@ -1,0 +1,372 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{bbold}
+
+\title{Curves }
+
+
+\date{}
+
+
+\begin{document}
+\maketitle
+
+These notes summarize the key points in the first chapter of Differential Geometry of Curves and Surfaces by Manfredo P. do Carmo. I wrote them to assure that the terminology and notation in my lecture agrees with that text. All page references in these notes are to the Do Carmo text.
+
+\begin{enumerate}
+  \item Definition. A parameterized smooth curve is a map $\alpha: I \rightarrow \mathbb{R}^{n}$ where $I \subseteq \mathbb{R}$ is an interval. The set theoretic image
+\end{enumerate}
+
+$$
+C=\alpha(I):=\{\alpha(t): t \in I\}
+$$
+
+is called the trace of $\alpha$ and $\alpha$ is called a parameterization of $C$. See do Carmo page 2.
+
+\begin{enumerate}
+  \setcounter{enumi}{1}
+  \item Remark. For do Carmo the words differentiable and smooth are synonymous. I prefer the word smooth. The adjective differentiable is often omitted by do Carmo.
+
+  \item Remark. On page 2 do Carmo says that the interval $I$ should be open but on page 30 he extends the notion of smoothness to closed intervals. A function defined on a closed interval $[a, b]$ is said to be smooth iff it extends to an open interval containing $[a, b]$. This means that the derivatives of the function are defined at the end points $a$ and $b$.
+
+  \item Definition. A reparameterization of $\alpha: I \rightarrow \mathbb{R}^{n}$ is a smooth map $\beta: J \rightarrow \mathbb{R}^{n}$ of form $\beta=\alpha \circ \sigma$ where $\sigma: J \rightarrow I$ is a diffeomorphism. That $\sigma$ is a diffeomorphism means $\sigma$ is one-to-one and onto (so there is an inverse map $\sigma^{-1}: J \rightarrow I$ ) and that $\sigma^{\prime}(t) \neq 0$ for $t \in I$ (so that the map $\sigma^{-1}$ is also smooth).
+
+  \item Remark. If $\beta$ is a reparameterization of $\alpha$, then the maps $\alpha$ and $\beta$ have the same trace $C$. The idea of the definition is that we should think of $\alpha$ and $\beta$ as different ways of describing the same curve $C$. However do Carmo avoids giving a precise definition of an (unparameterized) curve.
+
+  \item Example. The circle $C=\left\{(x, y) \in \mathbb{R}^{2}: x^{2}+y^{2}=1\right\}$ is the trace of the parameterized curve $\alpha: \mathbb{R} \rightarrow \mathbb{R}^{2}$ defined by
+
+\end{enumerate}
+
+$$
+\alpha(\theta)=(\cos \theta, \sin \theta)=(\cos (\theta+2 \pi), \sin (\theta+2 \pi)) .
+$$
+
+Define a map $\beta: \mathbb{R} \rightarrow \mathbb{R}^{2}$ by
+
+$$
+\beta(t)=\left(\frac{1-t^{2}}{1+t^{2}}, \frac{2 t}{1+t^{2}}\right)
+$$
+
+This map is a reparameterization of the restriction of $\alpha$ to the open interval $(-\pi, \pi)$ as follows:
+
+$$
+\begin{aligned}
+(\cos (2 \varphi), \sin (2 \varphi)) & =\left(\frac{\cos ^{2} \varphi-\sin ^{2} \varphi}{\cos ^{2} \varphi+\sin ^{2} \varphi}, \frac{2 \sin \varphi \cos \varphi}{\cos ^{2} \varphi+\sin ^{2} \varphi}\right) \\
+& =\left(\frac{1-\tan ^{2} \varphi}{1+\tan ^{2} \varphi}, \frac{2 \tan \varphi}{1+\tan ^{2} \varphi}\right) .
+\end{aligned}
+$$
+
+Take $2 \varphi=\theta, t=\tan \varphi=\tan (\theta / 2)$, and we get $\alpha=\beta \circ \sigma$ where $\sigma:(-\pi, \pi) \rightarrow \mathbb{R}$ is defined by $\sigma(\theta)=\tan (\theta / 2)$. The common trace of (the restriction of) $\alpha$ and the map $\beta$ is the punctured circle $C \backslash(-1,0)$. (This particular reparameterization is called the Weierstrass substitution or half angle substitution. It is one of the main techniques used to evaluate integrals in calculus.)
+
+\begin{enumerate}
+  \setcounter{enumi}{6}
+  \item Definition. Let $\alpha: I \rightarrow \mathbb{R}^{n}$ be a smooth parameterized curve. The derivative $\alpha^{\prime}(t)$ is called velocity vector at $t$. The map $\alpha$ is called regular iff its velocity vector never vanishes. The map $\alpha$ is said to be parameterized by arc length iff its tangent vector always has length one.
+
+  \item Theorem. A smooth regular parameterized curve $\alpha$ has a reparameterization by arc length, i.e. there is a reparameterization $\beta: J \rightarrow \mathbb{R}^{n}$ of $\alpha$ such that $\left|\beta^{\prime}(s)\right|=1$ for $s \in J$.
+
+\end{enumerate}
+
+Proof: This is the content of Remark 2 in do Carmo page 21. The reparametrization is defined by $\beta=\alpha \circ \sigma$ where $\sigma$ is a solution of the differential equation
+
+$$
+\sigma^{\prime}(s)=\frac{1}{\left|\alpha^{\prime}(\sigma(s))\right|}
+$$
+
+By the chain rule $\beta^{\prime}(s)=\alpha^{\prime}(\sigma(s)) \sigma^{\prime}(s)$ so $\left|\beta^{\prime}(s)\right|=1$.
+
+\begin{enumerate}
+  \setcounter{enumi}{8}
+  \item Remark. The arc length
+\end{enumerate}
+
+$$
+\ell(C)=\int_{a}^{b}\left|\alpha^{\prime}(t)\right| d t
+$$
+
+of the trace $C$ of a regular parameterized curve $\alpha:[a, b] \rightarrow \mathbb{R}^{n}$ is independent of the parameterization $\alpha$ used to define it. This is an easy consequence of the formula for changing variables in a definite integral: if $\sigma:[a, b] \rightarrow[c, d]$ is a diffeomorphism, then
+
+$$
+\int_{a}^{b}\left|\alpha^{\prime}(t)\right| d t=\int_{c}^{d}\left|\alpha^{\prime}(\sigma(r))\right|\left|\sigma^{\prime}(r)\right| d r
+$$
+
+(The change of variables is $t=\sigma(r)$ so $d t=\sigma^{\prime}(r) d r$.) When $\alpha$ is parameterized by arc length, $\ell(C)=|b-a|$. 10. The reparameterization in Theorem 8 is unique in the following sense: If $\beta_{1}: J_{1} \rightarrow \mathbb{R}^{n}$ and $\beta_{2}: J_{2} \rightarrow \mathbb{R}^{n}$ are two reparameterizations of the same map $\alpha$ then $\beta_{2}=\beta_{1} \circ \sigma$ where $\sigma: J_{2} \rightarrow J_{1}$ has one of the two forms $\sigma(s)=s+c$ or $\sigma(s)=-s+c$. (This is because $\left|\sigma^{\prime}(s)\right|=1$.) On page 6 do Carmo says that when $\sigma(s)=-s+c$ the two curves $\beta_{1}$ and $\beta_{2}$ are said to differ by a change of orientation.
+
+This use of the word orientation can be viewed as a special case of the definition of orientation of a vector space that do Carmo gives on pages 11 and 12. For a regular curve $\alpha$ the one dimensional vector space $\mathbb{R} \alpha^{\prime}(t) \subseteq \mathbb{R}^{n}$ is called the tangent space to the curve at the point $\alpha(t)$. The velocity vector $\alpha^{\prime}(t)$ is a basis for this space. Changing the orientation of the curve changes the sign of the velocity vector $\alpha^{\prime}(t)$ and thus reverses the orientation of the tangent space.
+
+\begin{enumerate}
+  \setcounter{enumi}{10}
+  \item Remark. Note the distinction between the tangent space and the tangent line. The tangent line is the line containing the points $\alpha(t)$ and $\alpha(t)+\alpha^{\prime}(t)$. (See do Carmo page 5.) This line need not pass through the origin of $\mathbb{R}^{n}$ and thus is not a vector subspace of the vector space $\mathbb{R}^{n}$. This illustrates the difference between points and vectors.
+
+  \item Remark. The two orientations of $\mathbb{R}^{3}$ correspond to the thumb, forefinger, and middle finger of the right and left hands. (Recall the right hand rule from calculus.) The two orientations of $\mathbb{R}^{2}$ correspond to clockwise and counter clockwise. The two orientations of $\mathbb{R}=\mathbb{R}^{1}$ correspond to the two directions increasing and decreasing.
+
+  \item Definition. A map $\Phi: \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}$ is called an isometry iff it preserves distance i.e. iff it satisfies
+
+\end{enumerate}
+
+$$
+|\Phi(p)-\Phi(q)|=|p-q|
+$$
+
+for $p, q \in \mathbb{R}^{n}$. A map $\mathbb{R}^{n} \rightarrow \mathbb{R}^{n}$ is called a translation iff there is a vector $\mathbf{c} \in \mathbb{R}^{n}$ such that the map sends the point $p \in \mathbb{R}^{n}$ to the point $p+\mathbf{c}$. A linear transformation $\rho: \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}$ is called orthogonal iff it satisfies $(\rho \mathbf{u}) \cdot(\rho \mathbf{v})=\mathbf{u} \cdot \mathbf{v}$ for all vectors $\mathbf{u}, \mathbf{v} \in \mathbb{R}^{n}$. A rigid motion of $\mathbb{R}^{n}$ is an isometry $\Phi$ such that the corresponding orthogonal linear transformation $\rho$ preserves orientation, i.e. has positive determinant.
+
+\begin{enumerate}
+  \setcounter{enumi}{13}
+  \item Theorem. A map $\Phi: \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}$ is an isometry if and only if it is the composition of a translation and an orthogonal linear transformation.
+\end{enumerate}
+
+Proof: For if see do Carmo page 23 Exercise 6 and do Carmo page 228 Exercise 7. The converse is not very difficult but is not needed in the rest of these notes so the proof is omitted.
+
+\begin{enumerate}
+  \setcounter{enumi}{14}
+  \item Theorem. Let $\alpha:[a, b] \rightarrow \mathbb{R}^{n}$ be smooth, $\Phi: \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}$ be an isometry, and $\beta=\Phi \circ \alpha:$ Then the curves $\alpha$ and $\beta$ have the same arc length. If $\alpha$ is parameterized by arc length so is $\beta$.
+\end{enumerate}
+
+Proof: This is because $\Phi$ preserves the length of vectors. The first part also follows from Exercise 8 on page 10 of do Carmo. 16. Definition. Let $\alpha: I \rightarrow \mathbb{R}^{n}$ be parameterized by arc length. Then the unit tangent vector is the vector valued function $\mathbf{t}: I \rightarrow \mathbb{R}^{n}$ defined by
+
+$$
+\mathbf{t}(s)=\alpha^{\prime}(s)=\frac{d}{d s} \alpha(s),
+$$
+
+the curvature vector is the vector valued function $I \rightarrow \mathbb{R}^{n}$
+
+$$
+\alpha^{\prime \prime}(s)=\frac{d}{d s} \mathbf{t}(s)=\frac{d^{2}}{d s^{2}} \alpha(s)
+$$
+
+and the curvature is the length $\kappa$ of the curvature vector, i.e.
+
+$$
+\kappa(s)=\left|\mathbf{t}^{\prime}(s)\right|=\left|\alpha^{\prime \prime}(s)\right| .
+$$
+
+The unit normal vector is the normalized curvature vector
+
+$$
+\mathbf{n}=\frac{\mathbf{t}^{\prime}}{\left|\mathbf{t}^{\prime}\right|}
+$$
+
+(The vector $\mathbf{n}$ is defined only where the curvature $\kappa$ is not zero.) The binormal vector is the vector product
+
+$$
+\mathbf{b}=\mathbf{t} \wedge \mathbf{n}
+$$
+
+of the unit tangent vector $\mathbf{t}$ and the unit normal vector $\mathbf{n}$. (The binormal vector is defined only when $n=3$.)
+
+\begin{enumerate}
+  \setcounter{enumi}{16}
+  \item Theorem. Let $\alpha: I \rightarrow \mathbb{R}^{n}$ be parametrized by arc length, $\Phi: \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}$ be an isometry, and $\beta=\Phi \circ \alpha: I \rightarrow \mathbb{R}^{n}$. Then $\beta$ is also parametrized by arc length and $\alpha$ and $\beta$ have the same curvature. If $n=3$ and $\Phi$ is a rigid motion they have the same torsion.
+\end{enumerate}
+
+Proof: Exercise 6 page 23 of do Carmo.
+
+\begin{enumerate}
+  \setcounter{enumi}{17}
+  \item Standing Assumption. Henceforth we assume that $\alpha: I \rightarrow \mathbb{R}^{3}$ is a regular curve parameterized by arc length.
+
+  \item Theorem. Then the vectors $\mathbf{t}, \mathbf{n}, \mathbf{b}$ are orthonormal, i.e.
+
+\end{enumerate}
+
+$$
+|\mathbf{t}|=|\mathbf{n}|=|\mathbf{b}|=1, \quad \mathbf{t} \cdot \mathbf{n}=\mathbf{t} \cdot \mathbf{b}=\mathbf{n} \cdot \mathbf{b}=0
+$$
+
+The ordered orthonormal basis $\mathbf{t}, \mathbf{n}, \mathbf{b}$ is called the Frenet trihedron.
+
+Proof: (See do Carmo pages 18-19.) The equations $|\mathbf{t}|=|\mathbf{n}|=1$ hold by definition. Since $|\mathbf{t}|^{2}=\mathbf{t} \cdot \mathbf{t}$ is constant we get
+
+$$
+0=\frac{d}{d s}|\mathbf{t}|^{2}=\frac{d}{d s} \mathbf{t} \cdot \mathbf{t}=2 \mathbf{t} \cdot \mathbf{t}^{\prime}=2 \kappa \mathbf{t} \cdot \mathbf{n}
+$$
+
+so $\mathbf{t} \cdot \mathbf{n}=0$. Now $\mathbf{b}$ is the vector product of two orthogonal unit vectors $\mathbf{t}$ and $\mathbf{n}$ so it is itself a unit vector and is orthogonal to both $\mathbf{t}$ and $\mathbf{n}$. 20. Corollary. The derivative $\mathbf{b}^{\prime}$ of the binormal vector $\mathbf{b}$ is parallel to the unit normal vector $\mathbf{n}$, i.e. there is a real valued function $\tau$ such that
+
+$$
+\mathbf{b}^{\prime}=\tau \mathbf{n}, \quad \tau=\mathbf{b}^{\prime} \cdot \mathbf{n} .
+$$
+
+The function $\tau$ is called the torsion.
+
+Proof: Since $\mathbf{t}^{\prime} \wedge \mathbf{n}=\kappa \mathbf{n} \wedge \mathbf{n}=0$ we have
+
+$$
+\mathbf{b}^{\prime}=(\mathbf{t} \wedge \mathbf{n})^{\prime}=\mathbf{t}^{\prime} \wedge \mathbf{n}+\mathbf{t} \wedge \mathbf{n}^{\prime}=\mathbf{t} \wedge \mathbf{n}^{\prime}
+$$
+
+so $\mathbf{b}^{\prime} \cdot \mathbf{t}=\mathbf{b}^{\prime} \cdot \mathbf{n}^{\prime}=0$.
+
+\begin{enumerate}
+  \setcounter{enumi}{20}
+  \item Frenet Formulas. The Frenet trihedron satisfies the differential equations
+\end{enumerate}
+
+$$
+\mathbf{t}^{\prime}=\kappa \mathbf{n}, \quad \mathbf{n}^{\prime}=-\kappa \mathbf{t}-\tau \mathbf{b}, \quad \mathbf{b}^{\prime}=\tau \mathbf{n} .
+$$
+
+Proof: The first and last formulas hold by definition. For the middle formula differentiate the identities $\mathbf{n} \cdot \mathbf{t}=\mathbf{n} \cdot \mathbf{b}=0$ and $\mathbf{n} \cdot \mathbf{n}=1$ to get
+
+$$
+\begin{aligned}
+& 0=\mathbf{n}^{\prime} \cdot \mathbf{t}+\mathbf{n} \cdot \mathbf{t}^{\prime}=\mathbf{n}^{\prime} \cdot \mathbf{t}+\kappa \mathbf{n} \cdot \mathbf{n}=\mathbf{n}^{\prime} \cdot \mathbf{t}+\kappa \\
+& 0=\mathbf{n}^{\prime} \cdot \mathbf{b}+\mathbf{n} \cdot \mathbf{b}^{\prime}=\mathbf{n}^{\prime} \cdot \mathbf{t}+\tau \mathbf{n} \cdot \mathbf{n}=\mathbf{n}^{\prime} \cdot \mathbf{b}+\tau \\
+& 0=2 \mathbf{n}^{\prime} \cdot \mathbf{n}
+\end{aligned}
+$$
+
+Since the Frenet trihedron is orthonormal
+
+$$
+\mathbf{n}^{\prime}=\left(\mathbf{n}^{\prime} \cdot \mathbf{t}\right) \mathbf{t}+\left(\mathbf{n}^{\prime} \cdot \mathbf{n}\right) \mathbf{n}+\left(\mathbf{n}^{\prime} \cdot \mathbf{b}\right) \mathbf{b} .
+$$
+
+This proves the middle Frenet formula.
+
+\begin{enumerate}
+  \setcounter{enumi}{21}
+  \item Remark. The Frenet formulas may be written in matrix form as
+\end{enumerate}
+
+$$
+\left(\begin{array}{c}
+\mathbf{t}^{\prime} \\
+\mathbf{n}^{\prime} \\
+\mathbf{b}^{\prime}
+\end{array}\right)=\left(\begin{array}{rrr}
+0 & \kappa & 0 \\
+-\kappa & 0 & -\tau \\
+0 & \tau & 0
+\end{array}\right)\left(\begin{array}{l}
+\mathbf{t} \\
+\mathbf{n} \\
+\mathbf{b}
+\end{array}\right)
+$$
+
+The coefficient matrix is skew symmetric. This is no coincidence. The two triples
+
+$$
+\mathbf{t}(s), \mathbf{n}(s), \mathbf{b}(s), \quad \mathbf{t}\left(s_{0}\right), \mathbf{n}\left(s_{0}\right), \mathbf{b}\left(s_{0}\right)
+$$
+
+are both bases for the vector space $\mathbb{R}^{3}$ so there is a unique change of basis matrix $U(s)$ satisfying
+
+$$
+\left(\begin{array}{c}
+\mathbf{t}(s) \\
+\mathbf{n}(s) \\
+\mathbf{b}(s)
+\end{array}\right)=U(s)\left(\begin{array}{c}
+\mathbf{t}\left(s_{0}\right) \\
+\mathbf{n}\left(s_{0}\right) \\
+\mathbf{b}\left(s_{0}\right.
+\end{array}\right) .
+$$
+
+Since the two bases are both orthonormal, the matrix $U(s)$ is orthogonal. Differentiating with respect to $s$ and evaluating at $s=s_{0}$ gives the Frenet formula (in matrix form) evaluated at $s=s_{0}$. But $U\left(s_{0}\right)$ is the identity matrix and $U(s)^{*}=U(s)^{-1}$ so $U^{*}(s) U(s)$ is the identity matrix so differentiating at $s$ and evaluating at $s_{0}$ gives
+
+$$
+U^{\prime}\left(s_{0}\right)^{*}+U^{\prime}\left(s_{0}\right)=0 .
+$$
+
+\begin{enumerate}
+  \setcounter{enumi}{22}
+  \item Theorem. Reversing the orientation of $\alpha$ leaves the curvature $\kappa$ and the torsion $\tau$ unchanged, i.e. if $\beta(s)=\alpha(-s)$ the curves $\alpha$ and $\beta$ have the same curvature and torsion at $s=0$.
+\end{enumerate}
+
+Proof: By definition the curvature $\kappa$ is nonnegative, the normal vector is only defined at points where the curvature $\kappa$ is not zero, reversing the orientation of $\alpha$ reverses the sign of the unit tangent vector $\mathbf{t}$ and leaves the sign of the curvature vector unchanged. Reversing the orientation of $\alpha$ reverses the sign of $\mathbf{t}$, preserves the sign of $\mathbf{n}$, and therefore reverses the sign of $\mathbf{b}=\mathbf{t} \wedge \mathbf{n}$. But reversing the orientation of $\mathbf{b}$ reverses the sign of $\mathbf{b}^{\prime}$ so reversing the orientation of $\alpha$ preserves the sign of $\mathbf{b}^{\prime}$ and hence (by the Frenet formula $\mathbf{b}^{\prime}=\tau \mathbf{n}$ ) preserves the sign of $\tau$.
+
+\begin{enumerate}
+  \setcounter{enumi}{23}
+  \item Fundamental Theorem. Let $\kappa, \tau: I \rightarrow \mathbb{R}$ be smooth functions defined on an interval $I$. Assume $\kappa>0$. Then
+\end{enumerate}
+
+(Existence.) There is a curve $\alpha: I \rightarrow \mathbb{R}^{3}$ parameterized by arc length with curvature $\kappa$ and torsion $\tau$.
+
+(Uniqueness.) If $\alpha, \beta: I \rightarrow \mathbb{R}^{3}$ are two curves paramaterized by arc length both having curvature $\kappa$ and torsion $\tau$, then there is a rigid motion $\Phi: \mathbb{R}^{3} \rightarrow \mathbb{R}^{3}$ such that $\beta=\Phi \circ \alpha$.
+
+Proof: See do Carmo page 309.
+
+\begin{enumerate}
+  \setcounter{enumi}{24}
+  \item Corollary. The curvature and torsion of the helix $\alpha(\theta)=(a \cos \theta, a \sin \theta, b \theta)$ are both constant so for any two points $p$ and $q$ on the helix there is a rigid motion carrying $p$ to $q$ and mapping the helix to itself.
+
+  \item Gauss curvature. In the case of a plane curve $(n=2)$ it is possible to choose a normal vector even when the curvature is zero. In this case since $\mathbf{t}$ and $\mathbf{n}$ are orthogonal unit vectors we can define $\mathbf{n}$ by rotating $\mathbf{t}$ clockwise through 90 degrees:
+
+\end{enumerate}
+
+$$
+\mathbf{t}=(\xi, \eta), \quad \mathbf{n}=(\eta,-\xi) .
+$$
+
+With this definition both $\mathbf{t}$ and $\mathbf{n}$ change sign when the orientation is reversed so to maintain the equation $\mathbf{t}^{\prime}=\kappa \mathbf{n}$ it is necessary to allow $\kappa$ to be negative. For a plane curve $\alpha: I \rightarrow \mathbb{R}^{2}$ parameterized by arc length we can view the unit normal vector as a map to the unit circle and define an angle $\theta=\theta(s)$ by the formula
+
+$$
+\mathbf{n}(s)=(\cos \theta(s), \sin \theta(s)) .
+$$
+
+We then define the signed curvature by the formula
+
+$$
+\kappa=\frac{d \theta}{d s} .
+$$
+
+The signed curvature $\kappa$ for a plane curve $C \subseteq \mathbb{R}^{2}$ is analogous to the Gauss curvature $K$ of a surface $S \subseteq \mathbb{R}^{3}$. (See do Carmo pages $146,155,167$.) Note that when $\alpha(s)=(\cos s, \sin s)$ is the counter clockwise parameterization of the unit circle in $\mathbb{R}^{2}$, the vector $\mathbf{n}$ defined by rotation of $\mathbf{t}$ as above is the outward normal (=radius vector) to the circle and the curvature $\kappa$ is identically one. Thus the curvature compares the curve $\alpha$ to the unit circle.
+
+\begin{enumerate}
+  \setcounter{enumi}{26}
+  \item Setup for local canonical form. Assume that $\alpha: I \rightarrow \mathbb{R}^{3}$ has positive curvature and $s_{0} \in I$. The Taylor expansion
+\end{enumerate}
+
+$$
+\alpha(s)=\alpha\left(s_{0}\right)+\left(s-s_{0}\right) \alpha^{\prime}\left(s_{0}\right)+\frac{\left(s-s_{0}\right)^{2}}{2} \alpha^{\prime \prime}\left(s_{0}\right)+\frac{\left(s-s_{0}\right)^{3}}{6} \alpha^{\prime \prime \prime}\left(s_{0}\right)+\cdots
+$$
+
+tells us what the trace $C$ of $\alpha$ looks like near the point $\alpha\left(s_{0}\right) \in \mathbb{C}$. Because any reparameterization of $C$ has the same trace we assume that $\alpha$ is parameterized by arc length. Because the reparameterization defined by $\sigma(s)=s-s_{0}$ is also a parameterization by arc length, we assume that $s_{0}=0$. Because the arc length, curvature, and torsion are invariant under rigid motions, we assume that
+
+$$
+\alpha(0)=(0,0,0), \quad \mathbf{t}(0)=(1,0,0), \quad \mathbf{n}(0)=(0,1,0), \quad \mathbf{b}(0)=(0,0,1) .
+$$
+
+\begin{enumerate}
+  \setcounter{enumi}{27}
+  \item Local Canonical Form. In the notation of Setup 27 above, the Taylor expansion of $\alpha(s)=(x(s), y(s), z(s))$ is
+\end{enumerate}
+
+$$
+\begin{aligned}
+& x(s)=s-\frac{\kappa(0) s^{3}}{6}+R_{x} \\
+& y(s)=\frac{\kappa(0) s^{2}}{2}-\frac{\kappa^{\prime}(0) s^{3}}{6}+R_{y} \\
+& z(s)=-\frac{\kappa(0) \tau(0) s^{3}}{6}+R_{z}
+\end{aligned}
+$$
+
+where $R_{x}, R_{y}, R_{z}=o\left(s^{3}\right)$
+
+Proof: There is no constant term in these formulas because $\alpha(0)=0$. By definition
+
+$$
+\alpha^{\prime}=\mathbf{t}, \quad \alpha^{\prime \prime}=\kappa \mathbf{n} .
+$$
+
+Differentiating once more gives
+
+$$
+\alpha^{\prime \prime \prime}=\kappa^{\prime} \mathbf{n}+\kappa \mathbf{n}^{\prime}=\kappa^{\prime} \mathbf{n}+\kappa(-\kappa \mathbf{t}-\tau \mathbf{b})
+$$
+
+by the second Frenet formula. Now evaluate at $s=s_{0}=0$.
+
+\begin{enumerate}
+  \setcounter{enumi}{28}
+  \item Application. Recall (Remark 11 above and do Carmo page 5) that the tangent line to the trace $C$ of a regular curve $\alpha$ at a point $p_{0}=\alpha\left(s_{0}\right) \in C$ is the line containing the two points $p_{0}$ and $p_{0}+\mathbf{t}_{0}$ where $\mathbf{t}_{0}=\mathbf{t}\left(s_{0}\right)$. The osculating plane to $C$ at $p_{0}$ is the plane containing the three points $p_{0}, p_{0}+\mathbf{t}_{0}, p_{0}+\mathbf{n}_{0}$ where $\mathbf{n}_{0}=\mathbf{n}\left(s_{0}\right)$. (See do Carmo pages 17, 29, 30. The definition assumes that the curvature $\kappa\left(s_{0}\right)$ at $p_{0}$ is positive.) Let $p_{1}=\alpha\left(s_{1}\right)$ and $p_{2}=\alpha\left(s_{2}\right)$ be two other points on $C$ distinct from $p_{0}$ and each other. Then as $s_{1} \rightarrow s_{0}$ the limit of the line through $p_{0}$ and $p_{1}$ is the tangent line at $p_{0}$ and the limit as $s_{1}, s_{2} \rightarrow s_{0}$ of the plane through $p_{0}, p_{1}$, and $p_{2}$ is the osculating plane.
+\end{enumerate}
+
+\end{document}
